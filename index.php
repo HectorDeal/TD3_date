@@ -66,11 +66,19 @@ $dtadd = date_add(new DateTime(), date_interval_create_from_date_string("25 days
                 <!-- 7. J + 25 -->
                
                <!-- Faites vos calculs ici -->
-                <p class="text-muted">La date J + 25 est : <?php              ?></p>
+                <p class="text-muted">La date J + 25 est : <?php
+                                                            $dateAdded25Days = date_add(new DateTime(), date_interval_create_from_date_string('25 days'));
+                                                            echo $dateAdded25Days->format('d/m/Y');
+                                                            // $day25 = time() + (25 * 86400);
+                                                            // echo date('d m y', $day25);
+                                                            ?></p>
                 
                 <!-- 8. J - 15 -->
                <!-- Faites vos calculs ici -->
-                <p class="text-muted">La date J - 15 est : <?php              ?></p>
+                <p class="text-muted">La date J - 15 est : <?php
+                                                            $dateSub15Days = date_sub(new DateTime(), date_interval_create_from_date_string('15 days'));
+                                                            echo $dateSub15Days->format('d/m/Y');
+                                                            ?></p>
                 <br>
                 
                 <!-- 9. Nb de jour dans le mois -->

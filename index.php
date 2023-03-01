@@ -1,16 +1,19 @@
 <?php
+date_default_timezone_set('Europe/Paris');
 $currDate = date('d/m/Y');
 $date_long = date('l F o');
 $datefr = date('H:i:s');
 // $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 
-
-$dt = new DateTime('2023-06-12');
+$dt = new DateTime();
 $formatter = new IntlDateFormatter('fr_FR');
 $formatter->setPattern('EEEE dd MMMM Y');
 
-$lamanu = date_create('2022-27-09')
+$lamanu = new DateTime('2022-09-27');
+$target = $dt -> getTimestamp() - $lamanu -> getTimestamp();
+$difftarget = floor($target/86400);
 
+$dtadd = date_add(new DateTime(), date_interval_create_from_date_string("25 days"))
 ?>
 
 <!doctype html>
@@ -58,21 +61,23 @@ $lamanu = date_create('2022-27-09')
                 <!-- 6. Calcul de date -->
                 <h2>Calcul de date</h2>
                 <!-- Faites vos calculs ici -->
-                <p class="text-muted">Nombre de jour dépuis le debut des cours <?php  ?></p>
+                <p class="text-muted">Nombre de jour dépuis le debut des cours <?= $difftarget ?></p>
                
                 <!-- 7. J + 25 -->
                
                <!-- Faites vos calculs ici -->
-                <p class="text-muted">La date J + 25 est : <?php // votre code ici ?></p>
+                <p class="text-muted">La date J + 25 est : <?php              ?></p>
                 
                 <!-- 8. J - 15 -->
                <!-- Faites vos calculs ici -->
-                <p class="text-muted">La date J - 15 est : <?php // votre code ici ?></p>
+                <p class="text-muted">La date J - 15 est : <?php              ?></p>
                 <br>
                 
                 <!-- 9. Nb de jour dans le mois -->
                 <h2>Nombre de jour dans le mois</h2>
-                <p class="text-muted">Nombre de jour : <?php // votre code ici ?></p>
+                <p class="text-muted">Nombre de jour : <?= cal_days_in_month(CAL_GREGORIAN, $dt -> format('m'), $dt->format('Y')) ?>
+                                                        <!-- <?= date('t')?> -->
+                </p>
                 
                 <!-- 10. Timestamp Epoch -->
                 <h2>Timestamp du 01/01/1970 00:00</h2>
